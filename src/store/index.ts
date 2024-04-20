@@ -3,7 +3,9 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     errors: new Map<number, ErrorObject>(),
-    errorsThisSession: 0
+    errorsThisSession: 0,
+    currentRoomID: 0,
+    currentRoomCode: "",
   },
   getters: {},
   mutations: {
@@ -12,6 +14,12 @@ export default createStore({
     },
     removeError(state, id) {
       state.errors.delete(id);
+    },
+    setCurrentRoomID(state, roomID) {
+      state.currentRoomID = roomID;
+    },
+    setRoomCode(state, code) {
+      state.currentRoomCode = code;
     }
   },
   actions: {
@@ -20,6 +28,12 @@ export default createStore({
     },
     removeError({ commit }, id: number) {
       commit("removeError", id);
+    },
+    setCurrentRoomID({ commit }, roomID) {
+      commit("setCurrentRoomID", roomID);
+    },
+    setRoomCode({ commit }, code) {
+      commit("setRoomCode", code);
     }
   },
   modules: {},
