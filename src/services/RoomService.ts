@@ -24,8 +24,9 @@ class RoomService {
 
         return axios.post(`${baseUri}room/join`, request)
         .then(res => {
-            store.dispatch("setCurrentRoomID", res.data.RoomId);
+            store.dispatch("setCurrentRoomID", res.data.Response.ID);
             store.dispatch("setRoomCode", request.Password);
+            store.dispatch("setRoomTitle", res.data.Response.Title);
             return res.data.Response;
         })
         .catch(err => {

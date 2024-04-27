@@ -4,8 +4,12 @@ export default createStore({
   state: {
     errors: new Map<number, ErrorObject>(),
     errorsThisSession: 0,
+
+    //Make this an object
     currentRoomID: 0,
     currentRoomCode: "",
+    currentRoomTitle: "",
+    votes: []
   },
   getters: {},
   mutations: {
@@ -20,6 +24,9 @@ export default createStore({
     },
     setRoomCode(state, code) {
       state.currentRoomCode = code;
+    },
+    setRoomTitle(state, title) {
+      state.currentRoomTitle = title;
     }
   },
   actions: {
@@ -34,6 +41,9 @@ export default createStore({
     },
     setRoomCode({ commit }, code) {
       commit("setRoomCode", code);
+    },
+    setRoomTitle({ commit }, title) {
+      commit("setRoomTitle", title);
     }
   },
   modules: {},

@@ -1,32 +1,33 @@
 <template>
     <v-container>
       <h3>{{ roomID }}</h3>
-      TESTSTETS
+      <h3>{{ roomTitle }}</h3>
+      <v-btn
+        color="success"
+        size="large"
+        variant="elevated"
+        block>
+        Add Vote
+      </v-btn>
     </v-container>  
   </template>
   
   <script lang="ts">
-  import { defineComponent } from 'vue';
+  import store from '@/store';
+import { defineComponent } from 'vue';
   
   
   export default defineComponent({
     data() {
       return {
         roomTitle: "",
-        roomID: "",
+        roomID: 0,
         loading: false,
       }
     },
-    // async mounted() {
-    
-    // },
-    methods: {
-      JoinRoom() {
-        console.log("Join")
-      },
-      CreateRoom() {
-        console.log("Create")
-      }
+    mounted() {
+      this.roomID = store.state.currentRoomID;
+      this.roomTitle = store.state.currentRoomTitle;
     }
   })
   </script>

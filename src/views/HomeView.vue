@@ -84,7 +84,7 @@ export default defineComponent({
     async JoinRoom() {
       const res = await RoomService.JoinRoom(this.roomID, this.existingCode);
       console.log(res);
-      //router.push({name: "room"})
+      router.push({name: "room"})
     },
     CreateRoom() {
       console.log("Create")
